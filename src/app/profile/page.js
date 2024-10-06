@@ -1,5 +1,6 @@
 'use client'; // Client-side code
 
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 const Profile = () => {
@@ -10,13 +11,13 @@ const Profile = () => {
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const response = await fetch('https://ecell-orcin.vercel.app/user/getuser',{
-           method: 'GET',
+        const response = await fetch('https://ecell-orcin.vercel.app/user/getuser', {
+          method: 'GET',
           credentials: 'include', // Important to include cookies
-           headers: {
-           'Content-Type': 'application/json',
-           }}
-        );
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        });
 
         if (response.ok) {
           const userData = await response.json();
@@ -42,11 +43,19 @@ const Profile = () => {
     <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
       <h1 className="text-2xl font-semibold mb-4">User Profile</h1>
       <div className="space-y-2">
-        <p><strong>Name:</strong> {user.username}</p>
-        <p><strong>Email:</strong> {user.email}</p>
-        <p><strong>Phone:</strong> {user.number}</p>
-        <p><strong>College Name:</strong> {user.collegeCity}</p>
-        <p><strong>Year of Study:</strong> {user.year}</p>
+        {user ? (
+          <>
+            <p><strong>Name:</strong> {user.username || 'N/A'}</p>
+            <p><strong>Email:</strong> {user.email || 'N/A'}</p>
+            <p><strong>Phone:</strong> {user.number || 'N/A'}</p>
+            <p><strong>College Name:</strong> {user.collegeCity || 'N/A'}</p>
+            <p><strong>Year of Study:</strong> {user.year || 'N/A'}</p>
+            
+              <a href='/task' className="text-blue-500 hover:underline">Go to Task Page</a>
+          </>
+        ) : (
+          <p>No user data available</p>
+        )}
       </div>
     </div>
   );
