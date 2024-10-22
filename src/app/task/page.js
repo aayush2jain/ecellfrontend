@@ -78,41 +78,62 @@ const TasksList = () => {
 
   console.log("googlesyb",submissionLinks);
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4">All Tasks</h1>
-      <ul className="space-y-4">
-        {tasks.map((task) => (
-          <li key={task._id} className="bg-white shadow-md rounded-lg p-4 flex flex-col space-y-4">
-            <div>
-              <h2 className="text-xl font-semibold">{task.title}</h2>
-              <p className="text-gray-600">{task.description}</p>
-              <p className="text-blue-500 font-bold">Points: {task.points}</p>
-            </div>
-            
-            {/* Input field for Google Drive submission link */}
-            {!submittedTasks.includes(task._id) && (
-              <input
-                type="text"
-                className="border p-2 rounded w-full"
-                placeholder="Enter Google Drive link"
-                value={submissionLinks[task._id] || ''} // Set the value from the state
-                onChange={(e) => handleInputChange(task._id, e.target.value)} // Handle input change
-              />
-            )}
+    <div id="profile" className='w-[100vw] h-[100vh]'>
+    <div  className="container mx-auto p-4">
+  <h1 className="text-5xl font-bold my-[5vh] text-white text-center">All Tasks</h1>
 
-            <button
-              onClick={() => handleSubmitTask(task._id)}
-              className={`px-4 py-2 font-semibold rounded-md ${
-                submittedTasks.includes(task._id) ? 'bg-green-500 text-white' : 'bg-blue-500 text-white hover:bg-blue-600'
-              }`}
-              disabled={submittedTasks.includes(task._id) || !submissionLinks[task._id]} // Disable if already submitted or no link provided
-            >
-              {submittedTasks.includes(task._id) ? 'Submitted' : 'Submit Task'}
-            </button>
-          </li>
+  {/* Responsive table */}
+  <div className=" rounded-xl overflow-x-auto h-[70vh]">
+    <table className="min-w-full bg-black/40 shadow-md rounded-lg ">
+      <thead>
+        <tr className='text-xl'>
+          <th className="py-2 px-4 border-b font-semibold text-gray-300 text-left">Title</th>
+          <th className="py-2 px-4 border-b  font-semibold  text-gray-300 text-left">Description</th>
+          <th className="py-2 px-4 border-b font-semibold  text-gray-300 text-left">Points</th>
+          <th className="py-2 px-4 border-b  font-semibold  text-gray-300 text-left">Submit</th>
+        </tr>
+      </thead>
+      <tbody>
+        {tasks.map((task) => (
+          <tr key={task._id} className="hover:bg-gray-700/60">
+            <td className="py-2 px-4 border-b text-gray-100 text-lg font-medium">{task.title}</td>
+            <td className="p-2 border-b w-full sm:w-[50vw] overflow-y-scroll text-gray-100 text-lg font-medium">
+  <p className="whitespace-pre-line">
+    
+    {task.description}
+  </p>
+</td>
+
+            <td className="py-2 px-4 border-b text-blue-500 font-bold">{task.points}</td>
+            <td className="py-2 px-4 border-b">
+              {!submittedTasks.includes(task._id) && (
+                <input
+                  type="text"
+                  className="border bg-transparent text-gray-200 border-gray-300 p-2 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500 mb-2"
+                  placeholder="Google Drive link"
+                  value={submissionLinks[task._id] || ''} // Value from state
+                  onChange={(e) => handleInputChange(task._id, e.target.value)} // Input change handler
+                />
+              )}
+              <button
+                onClick={() => handleSubmitTask(task._id)}
+                className={`w-full px-4 py-2 font-semibold rounded-md transition duration-200 ${
+                  submittedTasks.includes(task._id)
+                    ? 'bg-gray-600/90 text-gray-100'
+                    : 'bg-blue-600/90 text-white hover:bg-blue-700'
+                }`}
+                disabled={submittedTasks.includes(task._id) || !submissionLinks[task._id]} // Disable when submitted or no link
+              >
+                {submittedTasks.includes(task._id) ? 'Submitted' : 'Submit Task'}
+              </button>
+            </td>
+          </tr>
         ))}
-      </ul>
-    </div>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
   );
 };
 

@@ -1,101 +1,140 @@
-import Image from "next/image";
+"use client";
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect } from 'react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  useEffect(() => {
+    const video = document.getElementById('video');
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    // Trigger video play on scroll
+    gsap.to(video, {
+      scrollTrigger: {
+        trigger: '#exploreVideo',
+        toggleActions: 'play pause reverse restart',
+        onEnter: () => video.play(),
+        onEnterBack: () => video.play(),
+      },
+    });
+
+    // Animation for the heading
+    gsap.to('#heading1', {
+      opacity: 1,
+      delay: 0.5,
+      translateX: 10,
+      duration: 1,
+      scrollTrigger: {
+        trigger: '#heading1',
+      },
+    });
+
+    gsap.to('#heading2', {
+      opacity: 1,
+      delay: 0.5,
+      duration: 1,
+      translateY: -20,
+    });
+
+    gsap.to('#registerButton', {
+      opacity: 1,
+      delay: 1.5,
+      duration: 1,
+      y: 0,
+      stagger: 1,
+    });
+
+    // Explore section animations
+    gsap.to('#exploreh1', {
+      opacity: 1,
+      y: -20,
+      duration: 2,
+      delay: 1,
+      scrollTrigger: {
+        trigger: '#exploreh1',
+        end: 'top 40%',
+        scrub: 2,
+        markers: false,
+      },
+    });
+
+    gsap.to('#exploreh2', {
+      opacity: 1,
+      y: -20,
+      duration: 2,
+      delay: 1,
+      scrollTrigger: {
+        trigger: '#exploreh2',
+        end: 'top 40%',
+        scrub: 2,
+        markers: false,
+      },
+    });
+  }, []);
+
+  return (
+    <>
+      <div className="relative bg-black w-full">
+        <video
+          id="video"
+          src="/videos/video1.mp4"
+          autoPlay
+          loop
+          muted
+          className="absolute inset-0 md:ml-[10vw] w-full h-[50vh] md:h-[100vh] object-cover"
+        />
+        <div className="w-full h-full text-gray-100 absolute font-bold bg-black z-50">
+          <h1
+            id="heading1"
+            className="ml-[5vw] md:ml-[10vw] mt-[6vh] text-[10vw] md:text-[14vh] opacity-0"
           >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            ESUMMIT-2025
+          </h1>
+          <h1
+            id="heading2"
+            className="ml-[5vw] mt-[2vh] md:mt-0 text-gray-400 text-xl md:text-4xl opacity-0"
           >
-            Read our docs
-          </a>
+            CAMPUS AMBASSADOR PROGRAM
+          </h1>
+          <div
+            id="registerButton"
+            className="opacity-0 w-[40vw] md:w-[14vw] py-[2vh] px-[2vw] ml-[30vw] md:ml-[80vw] mt-[10vh] md:mt-[28vh] rounded-3xl text-lg md:text-xl font-semibold text-center
+             bg-gray-100 hover:font-bold text-gray-900 hover:text-black hover:cursor-pointer hover:bg-gray-400 shadow-xl outline-gray-600 outline-double outline-4"
+          >
+            <h1>Register Now</h1>
+          </div>
+          <h1
+            id="heading2"
+            className="opacity-0 mt-[8vh] md:mt-[20vh] text-center text-xl md:text-3xl text-white"
+          >
+            Become a Part of The North India's Biggest Entrepreneurship Summit
+          </h1>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+
+      <div className="w-full h-[50vh] md:h-[90vh] bg-black"></div>
+
+      <div className="flex flex-col md:flex-row h-full w-full py-[10vh] bg-black text-white">
+        <div className="flex-1 px-[5vw] md:px-0 text-center md:text-left">
+          <h1 className="text-3xl md:text-5xl font-bold md:my-[6vh]  text-center text-gray-100">ABOUT ESUMMIT</h1>
+          <p
+            id="exploreh1"
+            className="absolute md:w-[50vw] pt-[5vh] md:pt-0 w-auto text-center opacity-0 mt-[2vh] md:mt-[4vh] text-xl md:text-2xl px-[2vw] md:px-[2.5vw] bg-transparent font-medium"
+          >
+            <section>
+              Esummit is the <span className="font-bold text-gray-500">largest entrepreneurship fest in North India</span>.
+              It's the flagship event of E CELL DTU, with a <span className="font-bold text-gray-500">footfall of 50K+</span> and an online reach of <span className="font-bold text-gray-500">1M+</span>.
+            </section>
+            <section id="exploreh2" className="opacity-0 mt-4"><br></br>
+              Be it Seminars, Panel Discussions, Leadership Talks, Competitions, and PRO NIGHTS; we’ve got it all covered in this 2-day spectacle.
+            </section>
+          </p>
+        </div>
+        <div className="flex-1  md:mt-0">
+          <video src="/videos/video2.mp4" autoPlay loop muted className="w-[100vw] h-[50vh] md:h-auto md:w-[50vw] object-cover" />
+        </div>
+      </div>
+    </>
   );
 }

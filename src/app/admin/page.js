@@ -22,7 +22,7 @@ const TaskForm = () => {
     e.preventDefault();
     try {
       // Post request to create a task
-      const response = await axios.post('https://ecell-orcin.vercel.app/user/create-task', task);
+      const response = await axios.post('http://localhost:4000/user/create-task', task);
       console.log('Task created:', response.data);
       alert('Task created successfully');
       // Reset form
