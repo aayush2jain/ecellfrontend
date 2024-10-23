@@ -22,7 +22,6 @@ const Register = () => {
   };
 
   const handleSubmit = async (e) => {
-    console.log("check1");
     e.preventDefault();
     setLoading(true);
     try {
@@ -45,9 +44,9 @@ const Register = () => {
   };
 
   return (
-    <div id="loginpage"
+    <div
+      id="loginpage"
       className="md:min-h-screen bg-cover bg-center flex items-center justify-center"
-      // Industrial background image
     >
       <div className="bg-black/20 shadow-2xl rounded-lg p-8 w-full h-full md:h-auto md:max-w-4xl">
         <h1 className="text-3xl font-bold text-center text-gray-300 mb-6"> Register</h1>
@@ -63,7 +62,7 @@ const Register = () => {
               placeholder="Enter your name"
               value={formData.username}
               onChange={handleChange}
-              className="w-full mt-2 p-2 border text-xl font-medium border-gray-600 bg-transparent rounded-lg  text-gray-300  focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              className="w-full mt-2 p-2 border text-xl font-medium border-gray-600 bg-transparent rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500"
               required
             />
           </div>
@@ -78,7 +77,7 @@ const Register = () => {
               placeholder="Enter your email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full mt-2 p-2 border  text-xl font-medium  border-gray-300 bg-transparent rounded-lg  text-gray-300  focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              className="w-full mt-2 p-2 border text-xl font-medium border-gray-600 bg-transparent rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500"
               required
             />
           </div>
@@ -93,7 +92,7 @@ const Register = () => {
               placeholder="Enter your password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full mt-2 p-2 border text-xl font-medium  border-gray-600 bg-transparent  rounded-lg  text-gray-300  focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              className="w-full mt-2 p-2 border text-xl font-medium border-gray-600 bg-transparent rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500"
               required
             />
           </div>
@@ -108,25 +107,10 @@ const Register = () => {
               placeholder="Enter your phone number"
               value={formData.number}
               onChange={handleChange}
-              className="w-full mt-2 p-2 border text-xl font-medium  border-gray-600 bg-transparent  rounded-lg  text-gray-300  focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              className="w-full mt-2 p-2 border text-xl font-medium border-gray-600 bg-transparent rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500"
               required
             />
           </div>
-          {/* <div>
-            <label htmlFor="collegeCity" className="block text-xl font-semibold text-gray-300">
-              College City
-            </label>
-            <input
-              type="text"
-              name="collegeCity"
-              id="collegeCity"
-              placeholder="Enter your college city"
-              value={formData.collegeCity}
-              onChange={handleChange}
-              className="w-full mt-2 p-2 border border-gray-600 bg-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
-              required
-            />
-          </div> */}
           <div>
             <label htmlFor="college" className="block text-xl font-semibold text-gray-300">
               College Name
@@ -138,7 +122,7 @@ const Register = () => {
               placeholder="Enter your college name"
               value={formData.college}
               onChange={handleChange}
-              className="w-full mt-2 p-2 border text-xl font-medium  border-gray-600 bg-transparent rounded-lg text-gray-300  focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              className="w-full mt-2 p-2 border text-xl font-medium border-gray-600 bg-transparent rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500"
               required
             />
           </div>
@@ -153,49 +137,48 @@ const Register = () => {
               placeholder="Enter your year of study"
               value={formData.year}
               onChange={handleChange}
-              className="w-full mt-2 p-2 text-xl font-medium  border border-gray-600  bg-transparent rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              className="w-full mt-2 p-2 text-xl font-medium border-gray-600 bg-transparent rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500"
               required
             />
           </div>
-          
         </form>
         <div className="md:col-span-2">
-            <button
-              type="submit"
-              className={`w-[20vw] md:mx-[20vw] mx-[25vw] mt-[5vh] py-2 rounded-lg text-lg font-bold text-gray-100 transition-all border border-yellow-900 duration-200 ${
-                loading ? 'bg-gray-500 cursor-not-allowed' : 'bg-yellow-600 hover:bg-yellow-700'
-              }`}
-              disabled={loading}
-            >
-              {loading ? (
-                <div className="flex items-center justify-center">
-                  <svg
-                    className="animate-spin h-5 w-5 text-white mr-2"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                    ></circle>
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8v4a4 4 0 000 8v4a8 8 0 01-8-8z"
-                    ></path>
-                  </svg>
-                  Registering...
-                </div>
-              ) : (
-                'Register'
-              )}
-            </button>
-          </div>
+          <button
+            type="submit"
+            className={`w-[20vw] md:mx-[20vw] mx-[25vw] mt-[5vh] py-2 rounded-lg text-lg font-bold text-gray-100 transition-all border border-yellow-900 duration-200 ${
+              loading ? 'bg-gray-500 cursor-not-allowed' : 'bg-yellow-600 hover:bg-yellow-700'
+            }`}
+            disabled={loading}
+          >
+            {loading ? (
+              <div className="flex items-center justify-center">
+                <svg
+                  className="animate-spin h-5 w-5 text-white mr-2"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v4a4 4 0 000 8v4a8 8 0 01-8-8z"
+                  ></path>
+                </svg>
+                Registering...
+              </div>
+            ) : (
+              'Register'
+            )}
+          </button>
+        </div>
       </div>
     </div>
   );
