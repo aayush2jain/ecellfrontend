@@ -102,7 +102,7 @@ export default function Home() {
             className="opacity-0 w-[40vw] md:w-[14vw] py-[2vh] px-[2vw] ml-[30vw] md:ml-[80vw] mt-[10vh] md:mt-[28vh] rounded-3xl text-lg md:text-xl font-semibold text-center
              bg-gray-100 hover:font-bold text-gray-900 hover:text-black hover:cursor-pointer hover:bg-gray-400 shadow-xl outline-gray-600 outline-double outline-4"
           >
-            <h1>Register Now</h1>
+            <a href='/register'><h1>Register Now</h1></a>
           </div>
           <h1
             id="heading2"
