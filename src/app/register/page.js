@@ -22,6 +22,7 @@ const Register = () => {
   };
 
   const handleSubmit = async (e) => {
+    console.log("check1");
     e.preventDefault();
     setLoading(true);
     try {
