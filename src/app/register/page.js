@@ -22,6 +22,7 @@ const Register = () => {
   };
 
   const handleSubmit = async (e) => {
+    console.log("check1");
     e.preventDefault();
     setLoading(true);
     try {
@@ -141,8 +142,7 @@ const Register = () => {
               required
             />
           </div>
-        </form>
-        <div className="md:col-span-2">
+          <div className="md:col-span-2">
           <button
             type="submit"
             className={`w-[20vw] md:mx-[20vw] mx-[25vw] mt-[5vh] py-2 rounded-lg text-lg font-bold text-gray-100 transition-all border border-yellow-900 duration-200 ${
@@ -179,6 +179,7 @@ const Register = () => {
             )}
           </button>
         </div>
+        </form>
       </div>
     </div>
   );
