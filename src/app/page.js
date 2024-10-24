@@ -74,15 +74,15 @@ export default function Home() {
   }, []);
 
   return (
-    <>
-      <div className="relative bg-black w-full">
+    <div className='w-[100vw] bg-black overflow-x-hidden'>
+      <div className="relative bg-black w-[96vw]">
         <video
           id="video"
           src="/videos/video1.mp4"
           autoPlay
           loop
           muted
-          className="absolute inset-0 md:ml-[10vw] w-full h-[50vh] md:h-[100vh] object-cover"
+          className="absolute inset-0 md:ml-[10vw] w-[86vw] h-[50vh] md:h-[100vh] object-cover"
         />
         <div className="w-full h-full text-gray-100 absolute font-bold bg-black z-50">
           <h1
@@ -135,6 +135,6 @@ export default function Home() {
           <video src="/videos/video2.mp4" autoPlay loop muted className="w-[100vw] h-[50vh] md:h-auto md:w-[50vw] object-cover" />
         </div>
       </div>
-    </>
+    </div>
   );
 }

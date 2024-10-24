@@ -28,14 +28,13 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba('0,0,0,1'); /* Light gray for the track */
+  background: rgba('0,0,0,0'); /* Light gray for the track */
   border-radius: 20px; /* Rounded track edges */
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: #a9a9a9; /* Medium gray for the thumb */
   border-radius: 10px; /* Rounded scrollbar thumb */
-  border: 2px solid black; /* Border to match the track color */
 }
 
 ::-webkit-scrollbar-thumb:hover {
