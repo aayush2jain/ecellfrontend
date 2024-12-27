@@ -12,6 +12,7 @@ const Register = () => {
     collegeCity: '',
     college: '',
     year: '',
+    resume: '', // Added resume field
   });
 
   const [loading, setLoading] = useState(false);
@@ -113,6 +114,21 @@ const Register = () => {
             />
           </div>
           <div>
+            <label htmlFor="collegeCity" className="block text-xl font-semibold text-gray-300">
+              College City
+            </label>
+            <input
+              type="text"
+              name="collegeCity"
+              id="collegeCity"
+              placeholder="Enter your college city"
+              value={formData.collegeCity}
+              onChange={handleChange}
+              className="w-full mt-2 p-2 border text-xl font-medium border-gray-600 bg-transparent rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              required
+            />
+          </div>
+          <div>
             <label htmlFor="college" className="block text-xl font-semibold text-gray-300">
               College Name
             </label>
@@ -142,43 +158,58 @@ const Register = () => {
               required
             />
           </div>
+          <div>
+            <label htmlFor="resume" className="block text-xl font-semibold text-gray-300">
+              Resume (Google Drive Link)
+            </label>
+            <input
+              type="url"
+              name="resume"
+              id="resume"
+              placeholder="Enter the link to your resume"
+              value={formData.resume}
+              onChange={handleChange}
+              className="w-full mt-2 p-2 border text-xl font-medium border-gray-600 bg-transparent rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              required
+            />
+          </div>
           <div className="md:col-span-2">
-          <button
-            type="submit"
-            className={`w-[20vw] md:mx-[20vw] mx-[25vw] mt-[5vh] py-2 rounded-lg text-lg font-bold text-gray-100 transition-all border border-yellow-900 duration-200 ${
-              loading ? 'bg-gray-500 cursor-not-allowed' : 'bg-yellow-600 hover:bg-yellow-700'
-            }`}
-            disabled={loading}
-          >
-            {loading ? (
-              <div className="flex items-center justify-center">
-                <svg
-                  className="animate-spin h-5 w-5 text-white mr-2"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  ></circle>
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8v4a4 4 0 000 8v4a8 8 0 01-8-8z"
-                  ></path>
-                </svg>
-                Registering...
-              </div>
-            ) : (
-              'Register'
-            )}
-          </button>
-        </div>
+            <button
+              type="submit"
+              className={`w-[20vw] md:mx-[20vw] mx-[25vw] mt-[5vh] py-2 rounded-lg text-lg font-bold text-gray-100 transition-all border border-yellow-900 duration-200 ${
+                loading ? 'bg-gray-500 cursor-not-allowed' : 'bg-yellow-600 hover:bg-yellow-700'
+              }`}
+              disabled={loading}
+            >
+              {loading ? (
+                <div className="flex items-center justify-center">
+                  <svg
+                    className="animate-spin h-5 w-5 text-white mr-2"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8v4a4 4 0 000 8v4a8 8 0 01-8-8z"
+                    ></path>
+                  </svg>
+                  Registering...
+                </div>
+              ) : (
+                'Register'
+              )}
+            </button>
+          </div>
         </form>
       </div>
     </div>
@@ -186,3 +217,4 @@ const Register = () => {
 };
 
 export default Register;
+
